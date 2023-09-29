@@ -78,6 +78,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>parking-lot-app</finalName>
     </build>
 
 </project>

@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: "mysql:5.7"
+    container_name: "db-mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-data:/var/lib/mysql
+
+  spring-app:
+    image: heydie/parking-lot-app:latest
+    container_name: parking-lot-app
+    ports:
+      - "8083:8083"
+    environment:
+      - HOST_NAME=db
+      - HOST_PORT=3306
+      - USER=root
+      - PASS=root
+    depends_on:
+      - db
+
